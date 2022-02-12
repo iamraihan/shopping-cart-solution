@@ -1,24 +1,32 @@
-function updateCaseNumbers(isIncreasing) {
-    const caseInput = document.getElementById('case-number')
-    let caseNumber = caseInput.value
+function updateProductNumbers(product, price, isIncreasing) {
+    const productInput = document.getElementById(product + '-number')
+    let productNumber = productInput.value
     if (isIncreasing == true) {
-        caseNumber = parseInt(caseNumber) + 1
+        productNumber = parseInt(productNumber) + 1
     }
-    else if (caseNumber > 0) {
-        caseNumber = parseInt(caseNumber) - 1
+    else if (productNumber > 0) {
+        productNumber = parseInt(productNumber) - 1
     }
-    //update case total
-    let caseTotal = document.getElementById('case-total')
-    caseTotal.innerText = caseNumber * 59
-    caseInput.value = caseNumber
+    productInput.value = productNumber
+    //update total
+    let productTotal = document.getElementById(product + '-total')
+    productTotal.innerText = productNumber * price
 }
+//phone plus
+document.getElementById('phone-plus').addEventListener('click', function () {
+    updateProductNumbers('phone', 1219, true)
+})
+//phone minus
+document.getElementById('phone-minus').addEventListener('click', function () {
+    updateProductNumbers('phone', 1219, false)
+})
 
 //case plus 
 document.getElementById('case-plus').addEventListener('click', function () {
-    updateCaseNumbers(true)
+    updateProductNumbers('case', 59, true)
 })
 
 // case minus 
 document.getElementById('case-minus').addEventListener('click', function () {
-    updateCaseNumbers(false)
+    updateProductNumbers('case', 59, false)
 })
